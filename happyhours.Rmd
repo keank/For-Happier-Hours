@@ -1,0 +1,37 @@
+---
+title: "Happy Hours in Singapore"
+author: "Kean"
+date: "August 20, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+## Happy Hours in Singapore
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+require(leaflet)
+out=data.frame(
+  name=c('Brussels Sprouts','Chupitos','Suprette', 'Symmetry','Little Saigon Asia'),
+  lat=c(1.2914, 1.291028, 1.312899, 1.303882, 1.290668),
+  lng=c(103.8406, 103.845262, 103.859737, 103.859338, 103.846205),
+  comments=c('Tuesdays to Sundays: 1-for-1 drought beers for Happy Hour from open till 7pm; Mondays to Thursdays: 1-for-1 House Pours and wines from  10pm till closing',
+             'Make use of their happy hour to get your shots, house pours and beers at only $6.00. Of course only for selected beverages. 6.30PM - 9PM daily. On Wednesdays, Ladies get a complimentary shot with every pair of shooters purchased.',
+             '$9++ from 8am till 8pm daily for full pint of Asahi beer, or Red or House White wine.',
+             'Happy Hour: Sun - Mon: all day / Tue - Fri: 3 to 8pm / Sat: 9am to 8pm',
+             'During Happy Hour from 4pm -9pm daily, get 50% Off  all cocktails, wines by glass and draft beers (Heineken/Tiger). Beers end up at around $8, and cocktails, $8-9.')
+)
+
+drinkIcon=makeIcon(iconUrl='https://image.flaticon.com/icons/svg/39/39467.svg',
+                   iconWidth=30, iconHeight=30)
+
+out%>%
+  leaflet()%>%
+  addTiles()%>%
+  addMarkers(label=out$name, popup=out$comments,
+             icon=drinkIcon, clusterOptions=markerClusterOptions())
+
+```
+
