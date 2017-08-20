@@ -1,16 +1,15 @@
 ---
-title: "Happy Hours in Singapore"
+title: "For Happier Hours"
 author: "Kean"
 date: "August 20, 2017"
-output: ioslides_presentation
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-## Happy Hours in Singapore
+## For future urgent reference
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 require(leaflet)
 out=data.frame(
@@ -34,4 +33,3 @@ out%>%
              icon=drinkIcon, clusterOptions=markerClusterOptions())
 
 ```
-
